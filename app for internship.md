@@ -2,12 +2,9 @@ const http = require('http');
 const https = require('https');
 const express = require('express');
 var rank = '';
-
 const server = http.createServer((_req, res) => {
-    
-     res.writeHead(200, { 'Content-Type': 'text/plain' }); 
-    
-        const options = {
+         res.writeHead(200, { 'Content-Type': 'text/plain' }); 
+            const options = {
         host: 'api.coincap.io',
         path: '/v2/assets?',
         method: 'GET',
@@ -20,9 +17,7 @@ const server = http.createServer((_req, res) => {
         let str = '';
         
               response.on('data', function (chunk) {
-            str += chunk;
-        });
-        
+            str += chunk;        });        
         response.on('end', function () {
             const { priceUsd } = JSON.parse(str).data[rank-1]; 
             
@@ -40,10 +35,8 @@ app.use('/rates', function (request, response) {
       currency +
       '</p><p>PriceUsd=' +
       PriceUsd +
-      '</p>'
-  )
+      '</p>'  )
 });
     }).end();
   });
-
 server.listen(3000, '127.0.0.1');
