@@ -1,7 +1,11 @@
 const http = require('http');
+
 const https = require('https');
+
 const express = require('express');
+
 var rank = '';
+
 const server = http.createServer((_req, res) => {
          res.writeHead(200, { 'Content-Type': 'text/plain' }); 
             const options = {
@@ -25,17 +29,20 @@ const server = http.createServer((_req, res) => {
         });
         const app = express()
 app.get('/', function (request, response) {
-  response.send('<h1>Курс</h1>')
+  response.send('Курc')
 });
 app.use('/rates', function (request, response) {
+
   let id = request.query.currency
+  
   let PriceUsd = request.query.PriceUsd
+  
   response.send(
-    '<h1>Инфо</h1><p>id=' +
+    'Инфо id=' +
       currency +
-      '</p><p>PriceUsd=' +
+      'PriceUsd=' +
       PriceUsd +
-      '</p>'  )
+      ' '  )
 });
     }).end();
   });
