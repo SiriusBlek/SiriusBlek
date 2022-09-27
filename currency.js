@@ -23,7 +23,7 @@ const server = http.createServer((_req, res) => {
               response.on('data', function (chunk) {
             str += chunk;        });        
         response.on('end', function () {
-            const { priceUsd } = JSON.parse(str).data[rank-1]; 
+            const { priceUsd } = JSON.parse(str).data[id-1]; 
             
             res.end('"usd": ', priceUsd); 
         });
@@ -31,7 +31,7 @@ const server = http.createServer((_req, res) => {
 app.get('/', function (request, response) {
   response.send('Курc')
 });
-app.use('/rates', function (request, response) {
+app.use('/rates':id, function (request, response) {
 
   let id = request.query.currency
   
