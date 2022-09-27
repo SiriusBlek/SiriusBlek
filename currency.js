@@ -1,9 +1,8 @@
 const http = require('http');
-
 const https = require('https');
-
 const express = require('express');
 
+//Обьявляю переменные
 var rank = '';
 var x = '';
 var currency = '';
@@ -50,6 +49,6 @@ app.use('/rates':id, function (request, response) {
       PriceUsd +
       ' '  )
 });
-    }).end();
+    }).end();  // вызываю функцию
   });
 server.listen(3000, '127.0.0.1');
