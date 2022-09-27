@@ -5,10 +5,16 @@ const https = require('https');
 const express = require('express');
 
 var rank = '';
+var x = '';
+var currency = '';
+var app = express();
+var priceUsd = '';
 
-const server = http.createServer((_req, res) => {
-         res.writeHead(200, { 'Content-Type': 'text/plain' }); 
-            const options = {
+const server = http.createServer((_req, res) => {      // создаем инстанс класса http.Server
+      // при запросе к localhost:3000 выполнится этот колбэк    
+         res.writeHead(200, { 'Content-Type': 'text/plain' });   
+            // опции запроса к удаленному серверу
+         const options = {
         host: 'api.coincap.io',
         path: '/v2/assets?',
         method: 'GET',
@@ -17,15 +23,15 @@ const server = http.createServer((_req, res) => {
         }
       };
   
-       https.request(options, (response) => {
+       https.request(options, (response) => {  
         let str = '';
-        
-              response.on('data', function (chunk) {
+                 // данные грузятся не одним куском, а чанками
+                      response.on('data', function (chunk) {   
             str += chunk;        });        
         response.on('end', function () {
-            const { priceUsd } = JSON.parse(str).data[id-1]; 
+            const { priceUsd } = JSON.parse(str).data[id-1]; // получаем preiceUsd из ответа
             
-            res.end('"usd": ', priceUsd); 
+            res.end('"usd": ', priceUsd);  // отправляем ответ тому, кто обратился к localhost:3000
         });
         const app = express()
 app.get('/', function (request, response) {
